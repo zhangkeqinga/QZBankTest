@@ -1,0 +1,273 @@
+//
+//  QuestionData.swift
+//  QZBankTest
+//
+//  Created by mac on 16/8/6.
+//  Copyright © 2016年 com.cn.QZ. All rights reserved.
+//
+
+import UIKit
+
+class QuestionData: NSObject {
+    
+    
+    //MARK: //single_question_zg
+    let tablename11 = "single_question_zg"
+    //查询
+    func queryAllDirectorSingleQuestionData()->NSMutableArray{
+        var datas = NSMutableArray()
+        datas = BKDBManager.sharedInstance.queryDataAllQuestionM(tablename11)
+        return datas
+    }
+    
+    func queryDirectorSingleQuestionData(i_id:Int) -> QuestionM?{
+        let model = BKDBManager.sharedInstance.queryDataQuestionM(i_id, tableNmae: tablename11)
+        if model.questionid == 0 {
+            return nil
+        }
+        return model
+    }
+    //更新
+    func updataDirectorSingleQuestionData(model:QuestionM) {
+        BKDBManager.sharedInstance.updataDataQuestionM(tablename11, model: model)
+    }
+    
+    
+    
+    //MARK: //more_question_zg
+    let tablename12 = "more_question_zg"
+    //查询
+    func queryAllDirectorMoreQuestionData()->NSMutableArray{
+        var datas = NSMutableArray()
+        datas = BKDBManager.sharedInstance.queryDataAllQuestionM(tablename12)
+        return datas
+    }
+    
+    func queryDirectorMoreQuestionData(i_id:Int) -> QuestionM?{
+        let model = BKDBManager.sharedInstance.queryDataQuestionM(i_id, tableNmae: tablename12)
+        if model.questionid == 0 {
+            return nil
+        }
+        return model
+    }
+    //更新
+    func updataDirectorMoreQuestionData(model:QuestionM) {
+        BKDBManager.sharedInstance.updataDataQuestionM(tablename12, model: model)
+    }
+
+    
+    //MARK: //judge_question_zg
+    let tablename13 = "judge_question_zg"
+    //查询
+    func queryAllDirectorJudgeQuestionData()->NSMutableArray{
+        var datas = NSMutableArray()
+        datas = BKDBManager.sharedInstance.queryDataAllQuestionM(tablename13)
+        return datas
+    }
+    
+    func queryDirectorJudgeQuestionData(i_id:Int) -> QuestionM?{
+        let model = BKDBManager.sharedInstance.queryDataQuestionM(i_id, tableNmae: tablename13)
+        if model.questionid == 0 {
+            return nil
+        }
+        return model
+    }
+    //更新
+    func updataDirectorJudgeQuestionData(model:QuestionM) {
+        BKDBManager.sharedInstance.updataDataQuestionM(tablename13, model: model)
+    }
+    
+    
+    func updataALlQuestionDataWithTable(table:String,model:QuestionM) {
+        self.updataQuestionDataWithTable(table, model: model)
+
+    }
+
+
+    
+    //MARK:多表查询
+    
+    //
+    func queryColectionDirectorQuestionFromTabel_zg()->NSMutableArray{
+        
+        var datas = NSMutableArray()
+        datas = BKDBManager.sharedInstance.queryDataQuestionMWithField(tablename11, fieldKey: "collected", fieldContent: "1")
+        
+        var datas2 = NSMutableArray()
+        datas2 = BKDBManager.sharedInstance.queryDataQuestionMWithField(tablename12, fieldKey: "collected", fieldContent: "1")
+
+        var datas3 = NSMutableArray()
+        datas3 = BKDBManager.sharedInstance.queryDataQuestionMWithField(tablename13, fieldKey: "collected", fieldContent: "1")
+        
+        
+        let collectArray = NSMutableArray()
+        collectArray.addObjectsFromArray(datas as [AnyObject])
+        collectArray.addObjectsFromArray(datas2 as [AnyObject])
+        collectArray.addObjectsFromArray(datas3 as [AnyObject])
+        
+        
+        return collectArray
+        
+    }
+    
+    //错误
+    func queryErrorDirectorQuestionFromTabel_zg()->NSMutableArray{
+        
+        
+        var datas = NSMutableArray()
+        datas = BKDBManager.sharedInstance.queryDataQuestionMWithField(tablename11, fieldKey: "errorType", fieldContent: "2")
+        
+        var datas2 = NSMutableArray()
+        datas2 = BKDBManager.sharedInstance.queryDataQuestionMWithField(tablename12, fieldKey: "errorType", fieldContent: "2")
+        
+        var datas3 = NSMutableArray()
+        datas3 = BKDBManager.sharedInstance.queryDataQuestionMWithField(tablename13, fieldKey: "errorType", fieldContent: "2")
+        
+        
+        let collectArray = NSMutableArray()
+        collectArray.addObjectsFromArray(datas as [AnyObject])
+        collectArray.addObjectsFromArray(datas2 as [AnyObject])
+        collectArray.addObjectsFromArray(datas3 as [AnyObject])
+        
+        
+        return collectArray
+
+    }
+
+    
+    
+    
+    
+    //MARK: //single_question_gt
+    let tablename21 = "single_question_gt"
+    
+    //查询
+    func queryAllCounterSingleQuestionData()->NSMutableArray{
+        var datas = NSMutableArray()
+        datas = BKDBManager.sharedInstance.queryDataAllQuestionM(tablename21)
+        return datas
+    }
+    
+    func queryCounterSingleQuestionData(i_id:Int) -> QuestionM?{
+        let model = BKDBManager.sharedInstance.queryDataQuestionM(i_id, tableNmae: tablename21)
+        if model.questionid == 0 {
+            return nil
+        }
+        return model
+    }
+    //更新
+    func updataCounterSingleQuestionData(model:QuestionM) {
+        BKDBManager.sharedInstance.updataDataQuestionM(tablename21, model: model)
+    }
+    
+
+    //MARK: //more_question_gt
+    let tablename22 = "more_question_gt"
+    //查询
+    func queryAllCounterMoreQuestionData()->NSMutableArray{
+        var datas = NSMutableArray()
+        datas = BKDBManager.sharedInstance.queryDataAllQuestionM(tablename22)
+        return datas
+    }
+    
+    func queryCounterMoreQuestionData(i_id:Int) -> QuestionM?{
+        let model = BKDBManager.sharedInstance.queryDataQuestionM(i_id, tableNmae: tablename22)
+        if model.questionid == 0 {
+            return nil
+        }
+        return model
+    }
+    //更新
+    func updataCounterMoreQuestionData(model:QuestionM) {
+        BKDBManager.sharedInstance.updataDataQuestionM(tablename22, model: model)
+    }
+    
+    
+    //MARK: //judge_question_gt
+    let tablename23 = "judge_question_gt"
+    //查询
+    func queryAllCounterJudgeQuestionData()->NSMutableArray{
+        var datas = NSMutableArray()
+        datas = BKDBManager.sharedInstance.queryDataAllQuestionM(tablename23)
+        return datas
+    }
+    
+    func queryCounterJudgeQuestionData(i_id:Int) -> QuestionM?{
+        let model = BKDBManager.sharedInstance.queryDataQuestionM(i_id, tableNmae: tablename23)
+        if model.questionid == 0 {
+            return nil
+        }
+        return model
+    }
+    //更新
+    func updataCounterJudgeQuestionData(model:QuestionM) {
+        BKDBManager.sharedInstance.updataDataQuestionM(tablename23, model: model)
+    }
+    
+    
+    //MARK:根据表名进行数据更新
+    func updataQuestionDataWithTable(table:String ,model:QuestionM) {
+        BKDBManager.sharedInstance.updataDataQuestionM(table, model: model)
+    }
+
+    
+    //MARK:多表查询
+    
+    //搜藏
+    func queryColectionCounterQuestionFromTabel_gt()->NSMutableArray{
+        
+        var datas = NSMutableArray()
+        datas = BKDBManager.sharedInstance.queryDataQuestionMWithField(tablename11, fieldKey: "collected", fieldContent: "1")
+        
+        var datas2 = NSMutableArray()
+        datas2 = BKDBManager.sharedInstance.queryDataQuestionMWithField(tablename12, fieldKey: "collected", fieldContent: "1")
+        
+        var datas3 = NSMutableArray()
+        datas3 = BKDBManager.sharedInstance.queryDataQuestionMWithField(tablename13, fieldKey: "collected", fieldContent: "1")
+        
+        
+        let collectArray = NSMutableArray()
+        collectArray.addObjectsFromArray(datas as [AnyObject])
+        collectArray.addObjectsFromArray(datas2 as [AnyObject])
+        collectArray.addObjectsFromArray(datas3 as [AnyObject])
+        
+        
+        return collectArray
+        
+    }
+    
+    //错误
+    func queryErrorCounterQuestionFromTabel_gt()->NSMutableArray{
+        
+        
+        var datas = NSMutableArray()
+        datas = BKDBManager.sharedInstance.queryDataQuestionMWithField(tablename11, fieldKey: "errorType", fieldContent: "2")
+        
+        var datas2 = NSMutableArray()
+        datas2 = BKDBManager.sharedInstance.queryDataQuestionMWithField(tablename12, fieldKey: "errorType", fieldContent: "2")
+        
+        var datas3 = NSMutableArray()
+        datas3 = BKDBManager.sharedInstance.queryDataQuestionMWithField(tablename13, fieldKey: "errorType", fieldContent: "2")
+        
+        
+        let collectArray = NSMutableArray()
+        collectArray.addObjectsFromArray(datas as [AnyObject])
+        collectArray.addObjectsFromArray(datas2 as [AnyObject])
+        collectArray.addObjectsFromArray(datas3 as [AnyObject])
+        
+        return collectArray
+        
+    }
+    
+
+    //搜藏
+    func queryCount(num:String)-> Int{
+
+        let num = BKDBManager.sharedInstance.queryDataQuestionMAllCount(tablename13, fieldKey: "errorType", fieldContent: "2")
+
+        return num
+        
+    }
+    
+    
+}

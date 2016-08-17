@@ -1,0 +1,148 @@
+//
+//  RootVC.swift
+//  QZBankTest
+//
+//  Created by mac on 16/8/6.
+//  Copyright © 2016年 com.cn.QZ. All rights reserved.
+//
+
+import UIKit
+
+class RootVC: BaseVC,UITableViewDataSource,UITableViewDelegate{
+    
+    let CellIdCell = "RootCell"//cell id
+    
+    @IBOutlet weak var tableview: UITableView!
+    
+    var dataAllList:[UserQuestionM] = []
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController!.navigationBarHidden = true
+        self.tabBarController!.tabBar.hidden = false
+        CU.notifyPost("secondtabBarFootViewShow")
+
+    }
+    
+    
+    override func createViews() {
+        super.createViews()
+        self.title = "农业银行知识库"
+        
+        self.tableview.registerNib(UINib(nibName: "RootCell", bundle: nil), forCellReuseIdentifier: CellIdCell)
+        
+        self.tableview.clearFootV()
+        self.tableview.clearSeparator()
+        self.tableview.backgroundColor = UIColor.clearColor()
+
+        self.getDataNumber()
+        
+        
+    }
+    
+
+    
+    
+    func getDataNumber(){
+        let model = UserQuestionM()
+        model.userType = 1
+        model.singleNumber       = 1397
+        model.moreNumber         = 1013
+        model.judgeNumber        = 549
+        
+        model.singleFishNumber  = 0
+        model.moreFishNumber     = 0
+        model.judgeFishNumber    = 0
+        
+        model.collectNumber      = 0
+        model.errorNumber        = 0
+        
+        let model2 = UserQuestionM()
+        model.userType = 2
+        
+        model2.singleNumber       = 851
+        model2.moreNumber         = 666
+        model2.judgeNumber        = 572
+        
+        model2.singleFishNumber  = 0
+        model2.moreFishNumber     = 0
+        model2.judgeFishNumber    = 0
+        
+        model2.collectNumber      = 0
+        model2.errorNumber        = 0
+        
+        dataAllList.append(model2)
+        dataAllList.append(model)
+        
+        self.tableview.reloadData()
+        
+    }
+    
+    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+
+        
+    }
+    
+    
+    @IBAction func OnClickActionNextVC(){
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let myPersonnelListVC = MainTabBarVC()
+        appDelegate.navgationVC?.pushViewController(myPersonnelListVC, animated: true)
+        appDelegate.navgationVC?.navigationBarHidden = true
+        
+    }
+    
+    
+    
+    
+    //MARK: tableView
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return dataAllList.count
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
+        if dataAllList.count <= indexPath.row {
+            return 0
+        }
+        return 209
+    }
+    
+    
+    // 根据indexPath获取指定cell的item
+    private func getCellItem(indexPath: NSIndexPath)->AnyObject {
+        var item :AnyObject?
+        item = dataAllList[indexPath.row]
+        return item!
+    }
+    
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        
+        let cell:RootCell = tableView.dequeueReusableCellWithIdentifier("RootCell",forIndexPath: indexPath) as! RootCell
+        
+        cell.fillData(getCellItem(indexPath), indexPath: indexPath, handle: tableView.handler())
+
+        return cell
+        
+    }
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        
+    }
+
+    func checkEvaluate(button:UIButton){
+        
+    }
+    
+
+    
+
+}

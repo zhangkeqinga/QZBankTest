@@ -1,0 +1,47 @@
+//
+//  Menu1VC.swift
+//  QZBankTest
+//
+//  Created by mac on 16/8/4.
+//  Copyright © 2016年 com.cn.QZ. All rights reserved.
+//  习题库
+
+import UIKit
+
+class Menu1VC: BaseVC {
+    
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController!.navigationBarHidden = false
+        self.tabBarController!.tabBar.hidden = false
+        CU.notifyPost("tabBarFootViewShow")
+        
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "更多"
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

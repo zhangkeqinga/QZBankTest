@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuestionListVC" customModule="QZBankTest" customModuleProvider="target">
+            <connections>
+                <outlet property="btn1" destination="Q80-PI-kQs" id="S8r-bz-dmQ"/>
+                <outlet property="btn2" destination="v5J-yW-9SV" id="cPb-1P-AHH"/>
+                <outlet property="btn3" destination="MdD-kg-aqe" id="jq9-15-Evc"/>
+                <outlet property="lineV" destination="1Dg-Qa-B1b" id="5sg-pb-MBk"/>
+                <outlet property="originXConstrant" destination="cE7-fl-tdr" id="ztG-6c-1hQ"/>
+                <outlet property="tableview" destination="pcH-dL-sMv" id="Fhc-6e-7gO"/>
+                <outlet property="titleLb" destination="EtA-PB-LfM" id="BEE-xb-dpc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pcH-dL-sMv">
+                    <rect key="frame" x="0.0" y="112" width="320" height="456"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="zTs-eC-D7n"/>
+                        <outlet property="delegate" destination="-1" id="quH-pY-iL1"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XhW-oR-FUG">
+                    <rect key="frame" x="0.0" y="64" width="320" height="47"/>
+                    <subviews>
+                        <button opaque="NO" tag="3100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q80-PI-kQs">
+                            <rect key="frame" x="0.0" y="0.0" width="106" height="44"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="NkR-NV-vQy"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="单选题">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="selecteQuestionType:" destination="-1" eventType="touchUpInside" id="P27-Ew-pKZ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdD-kg-aqe">
+                            <rect key="frame" x="214" y="0.0" width="106" height="44"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="c6C-5l-Qzq"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="判断题">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="selecteQuestionType:" destination="-1" eventType="touchUpInside" id="sCC-eL-mL2"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Dg-Qa-B1b">
+                            <rect key="frame" x="0.0" y="44" width="106" height="3"/>
+                            <color key="backgroundColor" red="0.22702334569999999" green="0.62176202479999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="3" id="DmT-5D-OVv"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" tag="3101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5J-yW-9SV">
+                            <rect key="frame" x="107" y="0.0" width="106" height="44"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="Lu4-JP-q4W"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="多选题">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="selecteQuestionType:" destination="-1" eventType="touchUpInside" id="3aD-WY-67J"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="1Dg-Qa-B1b" secondAttribute="bottom" id="0PE-vW-5Rb"/>
+                        <constraint firstItem="v5J-yW-9SV" firstAttribute="top" secondItem="XhW-oR-FUG" secondAttribute="top" id="2sk-cE-HPh"/>
+                        <constraint firstAttribute="height" constant="47" id="44s-sm-aKO"/>
+                        <constraint firstItem="MdD-kg-aqe" firstAttribute="width" secondItem="Q80-PI-kQs" secondAttribute="width" id="5UU-B0-fUo"/>
+                        <constraint firstItem="MdD-kg-aqe" firstAttribute="leading" secondItem="v5J-yW-9SV" secondAttribute="trailing" constant="1" id="8E6-yb-8f0"/>
+                        <constraint firstAttribute="trailing" secondItem="MdD-kg-aqe" secondAttribute="trailing" id="8U3-5B-Vbn"/>
+                        <constraint firstItem="Q80-PI-kQs" firstAttribute="top" secondItem="XhW-oR-FUG" secondAttribute="top" id="DDl-7v-pF8"/>
+                        <constraint firstItem="MdD-kg-aqe" firstAttribute="leading" secondItem="v5J-yW-9SV" secondAttribute="trailing" constant="1" id="Mhp-4e-hnS"/>
+                        <constraint firstItem="v5J-yW-9SV" firstAttribute="leading" secondItem="Q80-PI-kQs" secondAttribute="trailing" constant="1" id="Zy6-ld-bpF"/>
+                        <constraint firstItem="1Dg-Qa-B1b" firstAttribute="leading" secondItem="XhW-oR-FUG" secondAttribute="leading" id="cE7-fl-tdr"/>
+                        <constraint firstItem="MdD-kg-aqe" firstAttribute="top" secondItem="XhW-oR-FUG" secondAttribute="top" id="cNd-h0-Gxb"/>
+                        <constraint firstItem="v5J-yW-9SV" firstAttribute="leading" secondItem="Q80-PI-kQs" secondAttribute="trailing" constant="1" id="gKX-dg-45q"/>
+                        <constraint firstItem="Q80-PI-kQs" firstAttribute="leading" secondItem="XhW-oR-FUG" secondAttribute="leading" id="heS-8W-hn0"/>
+                        <constraint firstItem="v5J-yW-9SV" firstAttribute="width" secondItem="Q80-PI-kQs" secondAttribute="width" id="p0p-Ct-iaI"/>
+                        <constraint firstItem="1Dg-Qa-B1b" firstAttribute="width" secondItem="Q80-PI-kQs" secondAttribute="width" id="u0J-hT-KAE"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 错题收集" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EtA-PB-LfM">
+                    <rect key="frame" x="0.0" y="64" width="320" height="47"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="1PK-Bo-smf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="EtA-PB-LfM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="3RR-5a-Wsl"/>
+                <constraint firstItem="XhW-oR-FUG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5kg-l5-MP5"/>
+                <constraint firstAttribute="trailing" secondItem="XhW-oR-FUG" secondAttribute="trailing" id="8sh-F8-vW9"/>
+                <constraint firstAttribute="trailing" secondItem="pcH-dL-sMv" secondAttribute="trailing" id="I64-kz-2tZ"/>
+                <constraint firstAttribute="bottom" secondItem="pcH-dL-sMv" secondAttribute="bottom" id="NPE-Vf-lZX"/>
+                <constraint firstItem="pcH-dL-sMv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="g2d-Ga-rSQ"/>
+                <constraint firstItem="EtA-PB-LfM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kHC-zL-vjp"/>
+                <constraint firstAttribute="trailing" secondItem="EtA-PB-LfM" secondAttribute="trailing" id="ptN-4u-b7B"/>
+                <constraint firstItem="pcH-dL-sMv" firstAttribute="top" secondItem="XhW-oR-FUG" secondAttribute="bottom" constant="1" id="q23-ic-FlS"/>
+                <constraint firstItem="XhW-oR-FUG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="reL-wI-H3F"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="202" y="250"/>
+        </view>
+    </objects>
+</document>

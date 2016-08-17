@@ -1,0 +1,177 @@
+//
+//  BKDBManager.swift
+//  QZBankTest
+//
+//  Created by mac on 16/8/6.
+//  Copyright © 2016年 com.cn.QZ. All rights reserved.
+//
+
+import UIKit
+
+class BKDBManager {
+    
+    static let sharedInstance = BKDBManager()
+    private init() { }
+    
+    
+    
+    /**
+     所有的表名
+     
+     single_question_zg       
+     more_question_zg         
+     judge_question_zg        
+     
+     single_question_gt       
+     more_question_gt         
+     judge_question_gt
+     
+     */
+    
+    
+    /**
+     查询
+     根据表名查询所有数据
+     
+     - parameter tableNmae:   数据库表名
+     - returns: 数组
+     */
+    
+    func queryDataAllQuestionM(tableNmae:String) -> NSMutableArray {
+        let sql = "select * from \(tableNmae)"
+        var datas = NSMutableArray()
+        if let data = DBAccess.sharedInstance().queryDataToObjArrary(sql, type: QuestionM.self){
+            datas = data 
+        }
+        return datas
+        
+    }
+    
+    
+    
+    
+    
+    /**
+     查询
+     根据数据库表名和questionid      查询单个实体数据
+     
+     - parameter i_id     : questionid
+     - parameter tableNmae: 表名
+     
+     - returns: 返回数据实体
+     */
+    
+    func queryDataQuestionM(i_id:Int,tableNmae:String) -> QuestionM {
+        
+        let sql = "select * from \(tableNmae) s where s.questionid=\(i_id)"
+        var model = QuestionM()
+        if let data = DBAccess.sharedInstance().queryDataToObj(sql, type: QuestionM.self)
+        {
+            model = data as! QuestionM
+        }
+        
+        return model;
+        
+    }
+    
+    
+    /**
+     根据字段查寻数据
+     
+     - parameter tableNmae:    tableNmae
+     - parameter fieldKey:     fieldKey  字段名
+     - parameter fieldContent: 字段 内容
+     
+     - returns: 返回查询结果数组
+     */
+    func queryDataQuestionMWithField(tableNmae:String,fieldKey:String,fieldContent:String) -> NSMutableArray {
+        
+        
+        let sql = "select * from \(tableNmae) s where s.\(fieldKey)=\(fieldContent)"
+        var datas = NSMutableArray()
+        if let data = DBAccess.sharedInstance().queryDataToObjArrary(sql, type: QuestionM.self){
+            datas = data
+        }
+        return datas
+
+    }
+    
+    /**
+     查询数据表中的数量
+     
+     - parameter tableNmae:
+     - parameter fieldKey:
+     - parameter fieldContent:
+     
+     - returns:
+     */
+    func queryDataQuestionMAllCount(tableNmae:String,fieldKey:String,fieldContent:String) -> Int {
+        
+        var datacount = 0
+        let sql = "select count(*) from \(tableNmae) s where s.\(fieldKey)=\(fieldContent)"
+        
+        if let data = DBAccess.sharedInstance().queryDataToObjArrary(sql, type: QuestionM.self){
+            datacount = data.count
+        }
+        
+        return datacount
+        
+    }
+
+
+    
+    /**
+     删除
+     根据表名删除单个数据
+     
+     - parameter i_id     :  questionid
+     - parameter tableNmae:  表名
+     
+     */
+    func deleteDataQuestionM(i_id:Int,tableNmae:String) {
+        
+        let sql = "delete from \(tableNmae) s where s.questionid=\(i_id)"
+        DBAccess.sharedInstance().runSQL(sql)
+        
+        
+    }
+    
+    /**
+     添加
+     插入数据
+     
+     - parameter tableNmae: 表明
+     - parameter model:     实体
+     */
+    func insertDataQuestionM(tableNmae:String,model:QuestionM) {
+        
+        let sql = "insert into \(tableNmae)(question,typeid,typename,answer_r,anwser_a,anwser_b,anwser_c,anwser_d) values(\(model.question),\(model.typeid),\(model.typename),\(model.answer_r),\(model.anwser_a),\(model.anwser_b),\(model.anwser_c),\(model.anwser_d)) "
+        
+        DBAccess.sharedInstance().runSQL(sql)
+        
+        
+    }
+    
+    
+    /**
+     更新
+     更新或者保存数据
+     
+     - parameter tableNmae: 表名
+     - parameter model:     数据实体
+     */
+    func updataDataQuestionM(tableNmae:String,model:QuestionM) {
+        
+        let sql = "UPDATE \(tableNmae) SET errorType = \(model.errorType),collected = \(model.collected) where  questionid = \(model.questionid) "
+        DBAccess.sharedInstance().runSQL(sql)
+        
+    }
+    
+    
+    
+
+    
+    
+    
+
+}

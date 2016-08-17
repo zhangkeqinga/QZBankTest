@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  QZBankTest
+
+  Created by mac on 16/8/4.
+  Copyright © 2016年 com.cn.QZ. All rights reserved.
+*/
+
+CFBundleDisplayName = "ProgramName";
+
+"tech_menu_1"="1";
+"tech_menu_2"="2";
+"tech_menu_3"="3";
+"tech_menu_4"="4";
+"tech_menu_5"="5";
